@@ -68,7 +68,6 @@
             z-index: 9999;
             will-change: transform;
         }
-        /* Nav completely removed */
         /* Sections */
         section {
             padding: 70px 20px;
@@ -99,7 +98,7 @@
             margin-bottom: 30px;
             font-size: 1.05rem;
         }
-        /* Buttons */
+        /* Buttons (general) */
         .btn {
             display: inline-block;
             padding: 10px 26px;
@@ -131,15 +130,7 @@
         .btn-outline:hover {
             background: rgba(212, 175, 55, 0.08);
         }
-        .btn-music {
-            background: linear-gradient(135deg, #8B5A3C, #6B4E3D);
-            color: #FDF8F4;
-            border: none;
-        }
-        .btn-music:hover {
-            background: linear-gradient(135deg, #A67B5B, #7B5A42);
-        }
-        /* Hero */
+        /* Hero – no buttons, pure typewriter */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -204,14 +195,7 @@
             80% { transform: scale(1.05); }
             100% { transform: scale(1); opacity: 1; }
         }
-        .hero-actions {
-            margin-top: 30px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-        }
-        /* Typewriter container */
+        /* Typewriter container – pure text, no buttons */
         #heroTypewriter {
             font-family: 'Dancing Script', cursive;
             font-size: 1.8rem;
@@ -223,9 +207,7 @@
             text-align: center;
             letter-spacing: 0.5px;
             margin-bottom: 10px;
-            transition: all 0.2s;
         }
-        /* Styled name after typing */
         .hero-name-typed {
             font-family: 'Great Vibes', cursive;
             font-size: 3.2rem;
@@ -243,7 +225,6 @@
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
-        /* Cursor blink */
         .cursor-blink {
             display: inline-block;
             width: 3px;
@@ -257,7 +238,7 @@
             from, to { background: transparent; }
             50% { background: var(--gold); }
         }
-        /* Cake (same styling with warmer colors) */
+        /* Cake */
         .cake-wrap {
             display: flex;
             flex-direction: column;
@@ -335,27 +316,23 @@
     <canvas id="heartsCanvas"></canvas>
     <div class="compliment-rain" id="complimentRain"></div>
 
-    <!-- Hidden audio for background music -->
+    <!-- Hidden audio (optional) -->
     <audio id="bgMusic" loop>
         <source src="" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
-    <!-- Hero with typewriter effect and profile picture -->
+    <!-- HERO: typewriter only, no buttons -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <!-- Profile picture - replace with her image -->
+            <!-- Profile picture (replace with her actual image) -->
             <div class="profile-pic" id="profilePic">
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect fill='%23C2A084' width='200' height='200'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' fill='%23FDF8F4' font-size='70' font-family='Georgia'%3E🌸%3C/text%3E%3C/svg%3E" alt="Shreya's photo">
                 <span class="placeholder-icon" style="display:none;">🌸</span>
             </div>
-            <!-- Typewriter area -->
+            <!-- The typewriter area -->
             <div id="heroTypewriter">
                 <span class="cursor-blink" id="typingCursor"></span>
-            </div>
-            <div class="hero-actions">
-                <a href="#cake" class="btn">🎂 Let's Cut the Cake</a>
-                <button class="btn btn-music" id="musicToggleBtn" onclick="toggleMusic()">🎵 Play Our Song</button>
             </div>
         </div>
     </section>
@@ -531,73 +508,41 @@
                 }
             }
 
-            // ---- Typewriter effect for hero ----
+            // ---- Typewriter effect for hero (no buttons) ----
             const heroTypewriter = document.getElementById('heroTypewriter');
             const cursor = document.getElementById('typingCursor');
             const fullHeroText = "Happy Birthday\nShreya\nYou are the gentle warmth in every cup of coffee,\nthe softest note in every love song,\nand the most beautiful chapter of my life.\nToday, the universe celebrates you. 💛";
-            let heroTypingTimer;
-            
+
             function typeHeroText() {
-                heroTypewriter.innerHTML = ''; // clear
-                heroTypewriter.appendChild(cursor); // keep cursor
+                heroTypewriter.innerHTML = '';
+                heroTypewriter.appendChild(cursor);
                 let i = 0;
-                const speed = 60; // ms per character
-                heroTypingTimer = setInterval(() => {
+                const speed = 60;
+                const timer = setInterval(() => {
                     if (i < fullHeroText.length) {
-                        // Insert character before cursor
                         const char = fullHeroText.charAt(i);
                         if (char === '\n') {
                             heroTypewriter.insertBefore(document.createElement('br'), cursor);
                         } else {
-                            const textNode = document.createTextNode(char);
-                            heroTypewriter.insertBefore(textNode, cursor);
+                            heroTypewriter.insertBefore(document.createTextNode(char), cursor);
                         }
                         i++;
                     } else {
-                        clearInterval(heroTypingTimer);
-                        // After typing, style the name "Shreya" beautifully
-                        const htmlContent = heroTypewriter.innerHTML;
-                        // Replace the second line (Shreya) with a styled span
-                        const lines = htmlContent.split('<br>');
+                        clearInterval(timer);
+                        // Style Shreya's name beautifully
+                        const html = heroTypewriter.innerHTML;
+                        const lines = html.split('<br>');
                         if (lines.length >= 2) {
                             lines[1] = '<span class="hero-name-typed">' + lines[1] + '</span>';
                             heroTypewriter.innerHTML = lines.join('<br>') + '<span class="cursor-blink" id="typingCursor"></span>';
-                            // Reattach cursor reference
-                            document.getElementById('typingCursor').addEventListener('animationend', null);
-                        }
-                        // Remove the temporary cursor if needed, but we already added a new one.
-                        // Ensure we have only one cursor.
-                        const cursors = heroTypewriter.querySelectorAll('.cursor-blink');
-                        if (cursors.length > 1) {
-                            for (let c = 0; c < cursors.length - 1; c++) cursors[c].remove();
+                            const cursors = heroTypewriter.querySelectorAll('.cursor-blink');
+                            if (cursors.length > 1) for (let c=0; c<cursors.length-1; c++) cursors[c].remove();
                         }
                     }
                 }, speed);
             }
 
-            // Start typing after a short delay
             setTimeout(typeHeroText, 800);
-
-            // ---- Music toggle ----
-            const bgMusic = document.getElementById('bgMusic');
-            let musicPlaying = false;
-            window.toggleMusic = function() {
-                const btn = document.getElementById('musicToggleBtn');
-                if (musicPlaying) {
-                    bgMusic.pause();
-                    btn.innerHTML = '🎵 Play Our Song';
-                    btn.classList.remove('btn-music');
-                    btn.classList.add('btn-outline');
-                } else {
-                    bgMusic.play().catch(() => {
-                        alert('Please replace the audio source with a romantic MP3 file.');
-                    });
-                    btn.innerHTML = '🎶 Pause Song';
-                    btn.classList.add('btn-music');
-                    btn.classList.remove('btn-outline');
-                }
-                musicPlaying = !musicPlaying;
-            };
 
             // ---- Cake ----
             let blown = 0;
@@ -642,11 +587,11 @@ Your forever love 💕`;
             };
 
             // ---- Love Counter ----
-            const startDate = new Date('2023-01-15'); // CHANGE to your special date
+            const startDate = new Date('2023-01-15');
             function updateCounter() {
                 const diff = Math.floor((new Date() - startDate)/(1000*60*60*24));
                 document.getElementById('loveCounter').textContent = diff.toLocaleString();
-                const nextBday = new Date(new Date().getFullYear(), 3, 26); // April 26 (adjust for her actual birthday)
+                const nextBday = new Date(new Date().getFullYear(), 3, 26);
                 if(nextBday < new Date()) nextBday.setFullYear(nextBday.getFullYear()+1);
                 const daysUntil = Math.ceil((nextBday - new Date())/(1000*60*60*24));
                 document.getElementById('nextBirthday').textContent = `🎂 Next birthday in ${daysUntil} days!`;
@@ -701,12 +646,12 @@ Your forever love 💕`;
                 addSoftHearts(8);
             };
 
-            // ---- Sparkle name hero (if needed) ----
+            // ---- Sparkle name (click on her name) ----
             window.sparkleName = function() {
                 addSoftHearts(10);
             };
 
-            // Initial gentle welcome
+            // Initial gentle hearts
             setTimeout(()=> addSoftHearts(10), 1500);
         })();
     </script>
