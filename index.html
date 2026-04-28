@@ -40,7 +40,6 @@
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
             font-size: 1.05rem;
-            text-rendering: optimizeLegibility;
         }
         h1, h2, h3, .sec-title {
             font-family: 'Playfair Display', serif;
@@ -141,7 +140,6 @@
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        /* Hidden main content */
         #mainContent {
             display: none;
         }
@@ -244,6 +242,25 @@
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 30px rgba(184,134,11,0.45);
+        }
+        .btn-music {
+            background: linear-gradient(135deg, #8B5A3C, #6B4E3D);
+            color: #FDF8F4;
+        }
+        .btn-music:hover {
+            background: linear-gradient(135deg, #A67B5B, #7B5A42);
+        }
+        .music-caption {
+            display: none;
+            margin-top: 6px;
+            font-family: 'Dancing Script', cursive;
+            color: var(--heart);
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+        .music-caption.show {
+            display: block;
+            animation: fadeInUp 0.4s ease;
         }
         .hero {
             min-height: 100vh;
@@ -358,10 +375,8 @@
             width: 140px;
             height: 140px;
             margin: 0 auto 15px;
-            cursor: pointer;
             transition: transform 0.3s;
         }
-        .cake:hover { transform: scale(1.02); }
         .cake .layer {
             position: absolute;
             left: 50%;
@@ -379,85 +394,35 @@
         @keyframes flicker { 0%{transform:translateX(-50%) scaleY(1);} 100%{transform:translateX(-50%) scaleY(0.65);} }
         .cake-msg { display:none; font-size:1.2rem; color:var(--espresso); background:rgba(255,248,244,0.9); padding:10px 24px; border-radius:30px; font-family:'Dancing Script', cursive; animation:popIn 0.5s ease; }
         @keyframes popIn { 0%{transform:scale(0.3);opacity:0;} 70%{transform:scale(1.08);} 100%{transform:scale(1);opacity:1;} }
-        /* Rose */
+        .sprinkle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sprinkleDrop 0.5s ease forwards;
+        }
+        @keyframes sprinkleDrop {
+            0% { transform: scale(0); opacity: 0; }
+            60% { transform: scale(1.5); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
         .rose-container { text-align:center; margin:20px 0; }
         .rose-svg { width:90px; height:90px; cursor:pointer; transition:transform 0.4s; }
         .rose-svg.blooming { transform:scale(1.2); }
-        /* Typed letter */
         .typed-container { background:var(--white); border-radius:20px; padding:30px; max-width:650px; margin:20px auto; box-shadow:0 6px 18px rgba(0,0,0,0.04); font-size:1.15rem; line-height:2; font-family:'Cormorant Garamond', serif; font-style:italic; min-height:100px; white-space:pre-wrap; color:var(--chocolate); }
-        /* Birthday note */
-        .bday-note {
-            background: var(--light);
-            border-radius: 20px;
-            padding: 30px;
-            max-width: 600px;
-            margin: 20px auto;
-            text-align: center;
-            font-style: italic;
-            line-height: 2;
-            font-size: 1.15rem;
-            color: var(--chocolate);
-        }
-        /* Balloon pop */
-        .balloon-pop-area {
-            text-align: center;
-            margin: 30px 0;
-        }
-        .wish-balloon {
-            width: 100px;
-            height: 120px;
-            border-radius: 50% 50% 45% 45%;
-            background: radial-gradient(circle at 30% 25%, #F0D8A8, #C49A6C);
-            margin: 0 auto 10px;
-            cursor: pointer;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            transition: transform 0.2s;
-            position: relative;
-            animation: floatBalloon 2s ease-in-out infinite;
-        }
-        @keyframes floatBalloon {
-            0%,100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-        .wish-balloon:hover {
-            transform: scale(1.05);
-        }
-        .wish-balloon.popped {
-            animation: popBurst 0.4s ease forwards;
-            pointer-events: none;
-        }
-        @keyframes popBurst {
-            0% { transform: scale(1); opacity:1; }
-            100% { transform: scale(1.8); opacity:0; }
-        }
-        .wish-message {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.4rem;
-            color: var(--heart);
-            display: none;
-            margin-top: 10px;
-        }
-        /* Compliment rain */
-        .compliment-rain {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            pointer-events: none;
-            z-index: 9998;
-        }
-        .compliment {
-            position: absolute;
-            font-size: 1.4rem;
-            animation: fall linear forwards;
-            white-space: nowrap;
-            font-family: 'Dancing Script', cursive;
-        }
-        @keyframes fall { to { transform: translateY(105vh); opacity: 0; } }
+        .balloon-pop-area { text-align:center; margin:30px 0; }
+        .wish-balloon { width:100px; height:120px; border-radius:50% 50% 45% 45%; background:radial-gradient(circle at 30% 25%, #F0D8A8, #C49A6C); margin:0 auto 10px; cursor:pointer; box-shadow:0 8px 20px rgba(0,0,0,0.15); transition:transform 0.2s; position:relative; animation:floatBalloon 2s ease-in-out infinite; }
+        @keyframes floatBalloon { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
+        .wish-balloon:hover { transform:scale(1.05); }
+        .wish-balloon.popped { animation:popBurst 0.4s ease forwards; pointer-events:none; }
+        @keyframes popBurst { 0%{transform:scale(1);opacity:1;} 100%{transform:scale(1.8);opacity:0;} }
+        .wish-message { font-family:'Dancing Script', cursive; font-size:1.4rem; color:var(--heart); display:none; margin-top:10px; }
+        .compliment-rain { position:fixed; top:0; left:0; width:100%; pointer-events:none; z-index:9998; }
+        .compliment { position:absolute; font-size:1.4rem; animation:fall linear forwards; white-space:nowrap; font-family:'Dancing Script', cursive; }
+        @keyframes fall { to { transform:translateY(105vh); opacity:0; } }
         footer { text-align:center; padding:30px; background:var(--deep); color:var(--cream); font-family:'Cormorant Garamond', serif; margin-top:30px; letter-spacing:0.5px; }
         @media (max-width:768px) {
-            .nav-inner { gap: 12px; }
-            .nav-inner a { font-size: 0.7rem; }
+            .nav-inner { gap:12px; }
+            .nav-inner a { font-size:0.7rem; }
             .hero-name { font-size:2.6rem; }
             .profile-pic { width:120px; height:120px; }
         }
@@ -480,7 +445,7 @@
         </div>
     </div>
 
-    <!-- Main content (hidden until yes) -->
+    <!-- Main Content -->
     <div id="mainContent">
         <nav id="navbar">
             <div class="nav-inner">
@@ -512,9 +477,11 @@
                     Today, the universe celebrates you. 💛
                 </p>
                 <div class="hero-actions">
-                    <a href="#cake" class="btn">🎂 Let's Cut the Cake</a>
+                    <!-- Play Our Song first, then Let's Cut the Cake -->
                     <button class="btn btn-music" id="musicToggleBtn" onclick="toggleMusic()">🎵 Play Our Song</button>
+                    <a href="#cake" class="btn">🎂 Let's Cut the Cake</a>
                 </div>
+                <p class="music-caption" id="musicCaption">🎶 This is how you sound… your song, your magic ✨</p>
             </div>
         </section>
 
@@ -524,7 +491,9 @@
             <p class="sec-sub">Blow each candle with a gentle tap 🕯️</p>
             <div class="cake-wrap">
                 <div class="cake" id="theCake">
-                    <div class="layer l1"></div><div class="layer l2"></div><div class="layer l3"></div>
+                    <div class="layer l1"></div>
+                    <div class="layer l2"></div>
+                    <div class="layer l3"></div>
                     <div class="icing"></div>
                     <div class="candles" id="candlesContainer">
                         <div class="candle"><div class="flame" onclick="blowCandle(event)"></div></div>
@@ -535,6 +504,7 @@
                     </div>
                 </div>
                 <div class="cake-msg" id="cakeMsg">🎉 Happy Birthday, my Shreya! I love you endlessly. 💖</div>
+                <button class="btn" onclick="addSprinkles()" style="margin-top:10px;">🌈 Add Sprinkles</button>
             </div>
         </section>
 
@@ -566,18 +536,7 @@
             <button class="btn" onclick="startTyping()">💌 Read My Words</button>
         </section>
 
-        <!-- Birthday Note (replaces love counter) -->
-        <section id="note">
-            <h2 class="sec-title">A Birthday Note</h2>
-            <div class="bday-note">
-                <p>🎂 Today, the world became brighter because you were born.<br>
-                You fill every moment with grace, laughter, and the sweetest love.<br>
-                May this year bring you endless joy and dreams come true.<br>
-                You are my forever sunshine, Shreya. ☀️</p>
-            </div>
-        </section>
-
-        <!-- Pop a Balloon (replaces love oracle) -->
+        <!-- Pop a Balloon -->
         <section id="balloon">
             <h2 class="sec-title">Pop a Birthday Balloon</h2>
             <p class="sec-sub">Tap to reveal a special wish 🎈</p>
@@ -602,7 +561,6 @@
 
     <script>
         (function() {
-            // ---- Canvas Hearts ----
             const canvas = document.getElementById('heartsCanvas');
             const ctx = canvas.getContext('2d');
             canvas.width = window.innerWidth;
@@ -653,7 +611,6 @@
                 }
             }
 
-            // ---- Welcome overlay logic ----
             window.revealPage = function() {
                 document.getElementById('welcomeOverlay').style.display = 'none';
                 document.getElementById('mainContent').style.display = 'block';
@@ -662,35 +619,34 @@
 
             window.handleNo = function() {
                 document.getElementById('noMessage').style.display = 'block';
-                // change the no button to become a yes button after a short delay
                 const noBtn = document.querySelector('.btn-no');
                 noBtn.textContent = 'Okay, show me 💕';
                 noBtn.onclick = revealPage;
             };
 
-            // ---- Nav scroll ----
             window.addEventListener('scroll', ()=> document.getElementById('navbar').classList.toggle('scrolled', window.scrollY>40));
 
-            // ---- Music toggle ----
             const bgMusic = document.getElementById('bgMusic');
             let musicPlaying = false;
             window.toggleMusic = function() {
                 const btn = document.getElementById('musicToggleBtn');
+                const caption = document.getElementById('musicCaption');
                 if (musicPlaying) {
                     bgMusic.pause();
                     btn.innerHTML = '🎵 Play Our Song';
                     btn.classList.remove('btn-music');
                     btn.classList.add('btn-outline');
+                    caption.classList.remove('show');
                 } else {
                     bgMusic.play().catch(() => alert('Music file not found. Make sure images/music.mp3 exists.'));
                     btn.innerHTML = '🎶 Pause Song';
                     btn.classList.add('btn-music');
                     btn.classList.remove('btn-outline');
+                    caption.classList.add('show');
                 }
                 musicPlaying = !musicPlaying;
             };
 
-            // ---- Cake ----
             let blown = 0;
             window.blowCandle = function(e) {
                 if(e.target.style.opacity==='0') return;
@@ -702,14 +658,29 @@
                 } else addSoftHearts(3);
             };
 
-            // ---- Rose ----
+            window.addSprinkles = function() {
+                const cake = document.getElementById('theCake');
+                const colors = ['#F4C2C2','#FFD700','#FFB6C1','#98FB98','#87CEEB','#DDA0DD','#F0E68C','#FFA07A'];
+                for(let i=0; i<8; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'sprinkle';
+                    dot.style.width = '8px';
+                    dot.style.height = '8px';
+                    dot.style.background = colors[Math.floor(Math.random()*colors.length)];
+                    dot.style.left = (30 + Math.random()*80) + 'px';
+                    dot.style.top = (20 + Math.random()*80) + 'px';
+                    cake.appendChild(dot);
+                    setTimeout(() => dot.remove(), 1500);
+                }
+                addSoftHearts(4);
+            };
+
             window.bloomRose = function() {
                 document.getElementById('roseSvg').classList.add('blooming');
                 document.getElementById('roseMessage').style.display='block';
                 addSoftHearts(6);
             };
 
-            // ---- Typed letter ----
             const letter = 
 `My dearest Shreya,
 
@@ -732,7 +703,6 @@ Your forever love 💕`;
                 addSoftHearts(6);
             };
 
-            // ---- Wish balloon ----
             const wishes = [
                 "May your day be as sweet as you are 🍫",
                 "All your dreams come true, my love ✨",
@@ -749,14 +719,12 @@ Your forever love 💕`;
                 msg.textContent = wishes[Math.floor(Math.random()*wishes.length)];
                 msg.style.display = 'block';
                 addSoftHearts(10);
-                // reset after a bit
                 setTimeout(() => {
                     balloon.classList.remove('popped');
                     msg.style.display = 'none';
-                }, 2500);
+                }, 2600);
             };
 
-            // ---- Compliment rain ----
             window.complimentRain = function() {
                 const container = document.getElementById('complimentRain');
                 const words = ['Beautiful','Gorgeous','Stunning','Amazing','Wonderful','Lovely','Incredible','Perfect','Radiant','Elegant','Sweetheart','Queen','Angel','Star','Dream'];
