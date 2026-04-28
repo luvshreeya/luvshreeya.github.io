@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Shreya 💕 · The World's Best</title>
-    <!-- Elegant Google Fonts -->
+    <title>Happy Birthday Shreya 💕 · Made with Love</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Dancing+Script:wght@400;600&family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
@@ -20,10 +19,8 @@
             --light: #F3EBE1;
             --warm: #FBF6F0;
             --gold: #D4AF37;
-            --gold2: #E0C18B;
             --rose: #B3762E;
             --heart: #C17860;
-            --pink: #E8B4A2;
             --white: #FFFDF9;
             --transition: 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
         }
@@ -65,9 +62,90 @@
             height: 100%;
             pointer-events: none;
             z-index: 9999;
-            will-change: transform;
         }
-        /* Minimal navigation */
+        /* Welcome overlay */
+        #welcomeOverlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(30, 16, 10, 0.92);
+            z-index: 10002;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+        }
+        .welcome-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 40px 30px;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            border: 2px solid var(--gold);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        .welcome-card h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: var(--espresso);
+            margin-bottom: 15px;
+        }
+        .welcome-card p {
+            font-size: 1.1rem;
+            color: var(--chocolate);
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+        .welcome-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .overlay-btn {
+            padding: 10px 30px;
+            border-radius: 50px;
+            border: none;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+        }
+        .btn-yes {
+            background: linear-gradient(135deg, #D4AF37, #B8860B);
+            color: white;
+        }
+        .btn-yes:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(184,134,11,0.4);
+        }
+        .btn-no {
+            background: transparent;
+            border: 2px solid var(--caramel);
+            color: var(--caramel);
+        }
+        .btn-no:hover {
+            background: rgba(162,123,91,0.1);
+        }
+        .no-message {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--heart);
+            display: none;
+            font-style: italic;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Hidden main content */
+        #mainContent {
+            display: none;
+        }
+        /* Minimal nav */
         nav {
             position: fixed;
             top: 0;
@@ -83,11 +161,11 @@
             background: rgba(40, 24, 16, 0.9);
         }
         .nav-inner {
-            max-width: 800px;
+            max-width: 500px;
             margin: 0 auto;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 22px;
             flex-wrap: wrap;
             padding: 0 15px;
         }
@@ -110,7 +188,7 @@
             width: 0;
             height: 1px;
             background: var(--gold);
-            transition: width 0.3s ease;
+            transition: width 0.3s;
         }
         .nav-inner a:hover {
             color: var(--gold);
@@ -122,7 +200,6 @@
             padding: 70px 20px;
             max-width: 1100px;
             margin: 0 auto;
-            position: relative;
         }
         .sec-title {
             text-align: center;
@@ -158,33 +235,15 @@
             letter-spacing: 1.5px;
             cursor: pointer;
             text-decoration: none;
-            transition: all 0.35s ease;
-            box-shadow: 0 6px 20px rgba(184, 134, 11, 0.25);
+            transition: all 0.35s;
+            box-shadow: 0 6px 20px rgba(184,134,11,0.25);
             font-family: 'Cormorant Garamond', serif;
             text-transform: uppercase;
             margin: 8px;
-            will-change: transform;
         }
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(184, 134, 11, 0.45);
-        }
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--gold);
-            box-shadow: none;
-        }
-        .btn-outline:hover {
-            background: rgba(212, 175, 55, 0.08);
-        }
-        .btn-music {
-            background: linear-gradient(135deg, #8B5A3C, #6B4E3D);
-            color: #FDF8F4;
-            border: none;
-        }
-        .btn-music:hover {
-            background: linear-gradient(135deg, #A67B5B, #7B5A42);
+            box-shadow: 0 12px 30px rgba(184,134,11,0.45);
         }
         .hero {
             min-height: 100vh;
@@ -227,16 +286,11 @@
             box-shadow: 0 8px 30px rgba(0,0,0,0.3);
             animation: softPop 1.2s ease forwards;
             background: var(--caramel);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
         }
         .profile-pic img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
         }
         @keyframes softPop {
             0% { transform: scale(0.3); opacity: 0; }
@@ -259,7 +313,6 @@
             font-size: clamp(2.3rem, 5.5vw, 4.5rem);
             color: #FDF8F4;
             letter-spacing: 2px;
-            margin-bottom: 0;
             font-family: 'Playfair Display', serif;
         }
         .hero-name {
@@ -269,7 +322,6 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             font-family: 'Great Vibes', cursive;
-            font-weight: 400;
             filter: drop-shadow(0 4px 20px rgba(212,175,55,0.5));
             margin: 10px 0;
             cursor: pointer;
@@ -284,7 +336,6 @@
             margin: 15px auto;
             font-size: 1.05rem;
             letter-spacing: 0.4px;
-            font-family: 'Cormorant Garamond', serif;
             font-style: italic;
             line-height: 1.8;
         }
@@ -295,6 +346,7 @@
             justify-content: center;
             gap: 12px;
         }
+        /* Cake */
         .cake-wrap {
             display: flex;
             flex-direction: column;
@@ -327,52 +379,84 @@
         @keyframes flicker { 0%{transform:translateX(-50%) scaleY(1);} 100%{transform:translateX(-50%) scaleY(0.65);} }
         .cake-msg { display:none; font-size:1.2rem; color:var(--espresso); background:rgba(255,248,244,0.9); padding:10px 24px; border-radius:30px; font-family:'Dancing Script', cursive; animation:popIn 0.5s ease; }
         @keyframes popIn { 0%{transform:scale(0.3);opacity:0;} 70%{transform:scale(1.08);} 100%{transform:scale(1);opacity:1;} }
+        /* Rose */
         .rose-container { text-align:center; margin:20px 0; }
         .rose-svg { width:90px; height:90px; cursor:pointer; transition:transform 0.4s; }
         .rose-svg.blooming { transform:scale(1.2); }
+        /* Typed letter */
         .typed-container { background:var(--white); border-radius:20px; padding:30px; max-width:650px; margin:20px auto; box-shadow:0 6px 18px rgba(0,0,0,0.04); font-size:1.15rem; line-height:2; font-family:'Cormorant Garamond', serif; font-style:italic; min-height:100px; white-space:pre-wrap; color:var(--chocolate); }
-        .counter-box { background:var(--light); border-radius:20px; padding:20px; text-align:center; max-width:400px; margin:20px auto; box-shadow:0 6px 16px rgba(0,0,0,0.04); }
-        .counter-num { font-size:2.6rem; color:var(--heart); font-family:'Great Vibes', cursive; }
-        .eightball { width:130px; height:130px; background:radial-gradient(circle at 35% 35%, #444, #111); border-radius:50%; margin:20px auto; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 10px 25px rgba(0,0,0,0.35); transition:transform 0.3s; }
-        .eightball:hover { transform:scale(1.04); }
-        .eightball .circle { width:65px; height:65px; background:white; border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--deep); font-weight:bold; font-size:0.85rem; text-align:center; }
-        .gallery-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap:14px; margin:20px 0; }
-        .gallery-item { aspect-ratio:1/1; border-radius:16px; overflow:hidden; cursor:pointer; background:linear-gradient(135deg, #A1887F, #BCAAA4); display:flex; align-items:center; justify-content:center; font-size:2.3rem; box-shadow:0 6px 16px rgba(62,39,35,0.08); transition:all 0.35s; border:2px solid rgba(212,175,55,0.25); }
-        .gallery-item:hover { transform:scale(1.03); border-color:var(--gold); }
-        .lightbox { display:none; position:fixed; inset:0; background:rgba(30,16,10,0.92); z-index:10001; justify-content:center; align-items:center; }
-        .lightbox.active { display:flex; }
-        .lightbox img { max-width:90%; max-height:80%; border-radius:18px; border:3px solid var(--gold); }
-        .lightbox .close { position:absolute; top:25px; right:35px; font-size:2rem; color:var(--gold); cursor:pointer; }
-        .hug-area { text-align:center; margin:20px 0; }
-        .hug-btn { font-size:3.5rem; cursor:pointer; background:none; border:none; transition:transform 0.3s; animation:pulse 2s infinite; }
-        @keyframes pulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.18);} }
-        .compliment-rain { position:fixed; top:0; left:0; width:100%; pointer-events:none; z-index:9998; }
-        .compliment { position:absolute; font-size:1.4rem; animation:fall linear forwards; white-space:nowrap; font-family:'Dancing Script', cursive; }
-        @keyframes fall { to { transform:translateY(105vh); opacity:0; } }
-        .pinterest-box {
-            text-align: center;
+        /* Birthday note */
+        .bday-note {
+            background: var(--light);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 600px;
             margin: 20px auto;
+            text-align: center;
+            font-style: italic;
+            line-height: 2;
+            font-size: 1.15rem;
+            color: var(--chocolate);
         }
-        .pinterest-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 30px;
-            background: #C28B6A;
-            color: #FFF;
-            border-radius: 50px;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            text-decoration: none;
-            font-family: 'Cormorant Garamond', serif;
-            transition: background 0.3s;
+        /* Balloon pop */
+        .balloon-pop-area {
+            text-align: center;
+            margin: 30px 0;
         }
-        .pinterest-btn:hover {
-            background: #B37755;
+        .wish-balloon {
+            width: 100px;
+            height: 120px;
+            border-radius: 50% 50% 45% 45%;
+            background: radial-gradient(circle at 30% 25%, #F0D8A8, #C49A6C);
+            margin: 0 auto 10px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transition: transform 0.2s;
+            position: relative;
+            animation: floatBalloon 2s ease-in-out infinite;
         }
+        @keyframes floatBalloon {
+            0%,100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .wish-balloon:hover {
+            transform: scale(1.05);
+        }
+        .wish-balloon.popped {
+            animation: popBurst 0.4s ease forwards;
+            pointer-events: none;
+        }
+        @keyframes popBurst {
+            0% { transform: scale(1); opacity:1; }
+            100% { transform: scale(1.8); opacity:0; }
+        }
+        .wish-message {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.4rem;
+            color: var(--heart);
+            display: none;
+            margin-top: 10px;
+        }
+        /* Compliment rain */
+        .compliment-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            pointer-events: none;
+            z-index: 9998;
+        }
+        .compliment {
+            position: absolute;
+            font-size: 1.4rem;
+            animation: fall linear forwards;
+            white-space: nowrap;
+            font-family: 'Dancing Script', cursive;
+        }
+        @keyframes fall { to { transform: translateY(105vh); opacity: 0; } }
         footer { text-align:center; padding:30px; background:var(--deep); color:var(--cream); font-family:'Cormorant Garamond', serif; margin-top:30px; letter-spacing:0.5px; }
         @media (max-width:768px) {
-            .nav-inner { gap: 10px; }
+            .nav-inner { gap: 12px; }
             .nav-inner a { font-size: 0.7rem; }
             .hero-name { font-size:2.6rem; }
             .profile-pic { width:120px; height:120px; }
@@ -383,173 +467,142 @@
     <canvas id="heartsCanvas"></canvas>
     <div class="compliment-rain" id="complimentRain"></div>
 
-    <!-- Minimal pretty navigation -->
-    <nav id="navbar">
-        <div class="nav-inner">
-            <a href="#home">Home</a>
-            <a href="#cake">🎂 Cake</a>
-            <a href="#rose">🌹 Rose</a>
-            <a href="#letter">💌 Letter</a>
-            <a href="#counter">⏳ Us</a>
-            <a href="#eightball">🎱 Magic</a>
-            <a href="#gallery">📸 Photos</a>
-            <a href="#pinterest">📌 Pinterest</a>
-            <a href="#hug">🤗 Hug</a>
-            <a href="#compliment">✨ Rain</a>
-        </div>
-    </nav>
-
-    <!-- Background music -->
-    <audio id="bgMusic" loop>
-        <source src="images/music.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-
-    <!-- Hero -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="profile-pic">
-                <img src="images/profile.jpeg" alt="Shreya's photo">
+    <!-- Welcome Overlay -->
+    <div id="welcomeOverlay">
+        <div class="welcome-card">
+            <h2>Hi, Shreya ✨</h2>
+            <p>Happy Birthday, my love!<br>I made something special just for you...<br>Would you like to see it? 💛</p>
+            <div class="welcome-buttons">
+                <button class="overlay-btn btn-yes" onclick="revealPage()">Yes, show me!</button>
+                <button class="overlay-btn btn-no" onclick="handleNo()">Not now...</button>
             </div>
-            <span class="hero-badge">🌸 a celebration of you 🌸</span>
-            <h1 class="hero-title">Happy Birthday</h1>
-            <div class="hero-name" onclick="sparkleName()">Shreya</div>
-            <p class="hero-msg">
-                You are the gentle warmth in every cup of coffee,<br>
-                the softest note in every love song,<br>
-                and the most beautiful chapter of my life.<br>
-                Today, the universe celebrates you. 💛
-            </p>
-            <div class="hero-actions">
-                <a href="#cake" class="btn">🎂 Let's Cut the Cake</a>
-                <button class="btn btn-music" id="musicToggleBtn" onclick="toggleMusic()">🎵 Play Our Song</button>
-            </div>
+            <p class="no-message" id="noMessage">Oh, please? I poured my heart into it 💕</p>
         </div>
-    </section>
-
-    <!-- Cake -->
-    <section id="cake">
-        <h2 class="sec-title">Make a Wish</h2>
-        <p class="sec-sub">Blow each candle with a gentle tap 🕯️</p>
-        <div class="cake-wrap">
-            <div class="cake" id="theCake">
-                <div class="layer l1"></div><div class="layer l2"></div><div class="layer l3"></div>
-                <div class="icing"></div>
-                <div class="candles" id="candlesContainer">
-                    <div class="candle"><div class="flame" onclick="blowCandle(event)"></div></div>
-                    <div class="candle"><div class="flame" onclick="blowCandle(event)"></div></div>
-                    <div class="candle"><div class="flame" onclick="blowCandle(event)"></div></div>
-                    <div class="candle"><div class="flame" onclick="blowCandle(event)"></div></div>
-                    <div class="candle"><div class="flame" onclick="blowCandle(event)"></div></div>
-                </div>
-            </div>
-            <div class="cake-msg" id="cakeMsg">🎉 Happy Birthday, my Shreya! I love you endlessly. 💖</div>
-        </div>
-    </section>
-
-    <!-- Rose -->
-    <section id="rose">
-        <h2 class="sec-title">Bloom for You</h2>
-        <p class="sec-sub">A rose that opens with your touch 🌹</p>
-        <div class="rose-container">
-            <svg class="rose-svg" id="roseSvg" viewBox="0 0 100 100" onclick="bloomRose()">
-                <g id="petals">
-                    <circle cx="50" cy="38" r="10" fill="#D4A574" opacity="0.8"/>
-                    <circle cx="32" cy="48" r="10" fill="#C9A96E" opacity="0.8"/>
-                    <circle cx="68" cy="48" r="10" fill="#B8860B" opacity="0.8"/>
-                    <circle cx="40" cy="66" r="10" fill="#C49A6C" opacity="0.8"/>
-                    <circle cx="60" cy="66" r="10" fill="#D4A574" opacity="0.8"/>
-                    <circle cx="50" cy="50" r="8" fill="#A05828"/>
-                </g>
-                <text x="50" y="90" text-anchor="middle" fill="#5D4037" font-size="10">🌿</text>
-            </svg>
-            <p id="roseMessage" style="color:var(--heart); font-family:'Dancing Script', cursive; font-size:1.3rem; display:none;">You make my world bloom every day 💗</p>
-        </div>
-    </section>
-
-    <!-- Typed Letter -->
-    <section id="letter">
-        <h2 class="sec-title">A Letter from My Heart</h2>
-        <p class="sec-sub">Press the button to open 💌</p>
-        <div class="typed-container" id="typedLetter"></div>
-        <button class="btn" onclick="startTyping()">💌 Read My Words</button>
-    </section>
-
-    <!-- Love Counter -->
-    <section id="counter">
-        <h2 class="sec-title">Every Day with You</h2>
-        <div class="counter-box">
-            <p style="color:var(--caramel);">Since our beautiful journey started...</p>
-            <div class="counter-num" id="loveCounter">...</div>
-            <p>days of loving you 💛</p>
-            <p id="nextBirthday" style="color:var(--chocolate); margin-top:8px;"></p>
-        </div>
-    </section>
-
-    <!-- Magic 8-Ball -->
-    <section id="eightball">
-        <h2 class="sec-title">The Love Oracle</h2>
-        <p class="sec-sub">Ask a question about us, then tap 🎱</p>
-        <div class="eightball" onclick="shakeBall()">
-            <div class="circle" id="ballAnswer">💝</div>
-        </div>
-    </section>
-
-    <!-- Gallery -->
-    <section id="gallery">
-        <h2 class="sec-title">Our Little World</h2>
-        <p class="sec-sub">Tap any photo to make it bigger 📸</p>
-        <div class="gallery-grid" id="galleryGrid">
-            <div class="gallery-item" data-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect fill='%23BCAAA4' width='200' height='200'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23FFF' font-size='22'%3E📸 Your Smile%3C/text%3E%3C/svg%3E">📸</div>
-            <div class="gallery-item" data-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect fill='%23A1887F' width='200' height='200'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23FFF' font-size='22'%3E🌹 Our Day%3C/text%3E%3C/svg%3E">🌹</div>
-            <div class="gallery-item" data-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect fill='%23C9A96E' width='200' height='200'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23FFF' font-size='22'%3E☕ Coffee Date%3C/text%3E%3C/svg%3E">☕</div>
-            <div class="gallery-item" data-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect fill='%23D4A574' width='200' height='200'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23FFF' font-size='22'%3E🌅 Forever%3C/text%3E%3C/svg%3E">🌅</div>
-        </div>
-        <p style="text-align:center; color:var(--caramel); font-size:0.8rem;">Replace with real photos for extra magic ✨</p>
-    </section>
-    <div class="lightbox" id="lightbox">
-        <span class="close" id="closeLightbox">✕</span>
-        <img src="" alt="memory" id="lightboxImg">
     </div>
 
-    <!-- Pinterest (replacing Spotify) -->
-    <section id="pinterest">
-        <h2 class="sec-title">Shreya's Pinterest</h2>
-        <p class="sec-sub">A little board of inspiration, just like you 📌</p>
-        <div class="pinterest-box">
-            <a href="https://pin.it/your-pinterest-link" target="_blank" class="pinterest-btn">
-                📌 Visit her Pinterest
-            </a>
-            <p style="color:var(--caramel); margin-top:10px; font-size:0.9rem;">(Replace the link with her actual Pinterest URL)</p>
-        </div>
-    </section>
+    <!-- Main content (hidden until yes) -->
+    <div id="mainContent">
+        <nav id="navbar">
+            <div class="nav-inner">
+                <a href="#home">Home</a>
+                <a href="#cake">🎂 Cake</a>
+                <a href="#rose">🌹 Rose</a>
+                <a href="#letter">💌 Letter</a>
+                <a href="#rain">✨ Rain</a>
+            </div>
+        </nav>
 
-    <!-- Hug -->
-    <section id="hug">
-        <h2 class="sec-title">A Warm Hug</h2>
-        <p class="sec-sub">Because you deserve all the warmth in the world 🤗</p>
-        <div class="hug-area">
-            <button class="hug-btn" onclick="sendHug()">🤗</button>
-            <p style="color:var(--caramel);">Tap for a cuddle</p>
-            <p id="hugCounter" style="color:var(--chocolate); font-weight:bold;">Hugs sent: 0 🫂</p>
-        </div>
-    </section>
+        <audio id="bgMusic" loop>
+            <source src="images/music.mp3" type="audio/mpeg">
+        </audio>
 
-    <!-- Compliment Rain -->
-    <section id="compliment" style="text-align:center;">
-        <h2 class="sec-title">Compliment Shower</h2>
-        <button class="btn" onclick="complimentRain()">✨ Let it Rain</button>
-        <p style="color:var(--caramel); margin-top:8px;">Because you're infinitely wonderful 💖</p>
-    </section>
+        <!-- Hero -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <div class="profile-pic">
+                    <img src="images/profile.jpeg" alt="Shreya">
+                </div>
+                <span class="hero-badge">🌸 a celebration of you 🌸</span>
+                <h1 class="hero-title">Happy Birthday</h1>
+                <div class="hero-name" onclick="sparkleName()">Shreya</div>
+                <p class="hero-msg">
+                    You are the gentle warmth in every cup of coffee,<br>
+                    the softest note in every love song,<br>
+                    and the most beautiful chapter of my life.<br>
+                    Today, the universe celebrates you. 💛
+                </p>
+                <div class="hero-actions">
+                    <a href="#cake" class="btn">🎂 Let's Cut the Cake</a>
+                    <button class="btn btn-music" id="musicToggleBtn" onclick="toggleMusic()">🎵 Play Our Song</button>
+                </div>
+            </div>
+        </section>
 
-    <footer>
-        <p>Handcrafted with <span style="color:var(--heart);">❤️</span> for <strong>Shreya</strong></p>
-        <p style="font-size:0.8rem; opacity:0.7;">Happy Birthday · The World's Best · Forever Yours</p>
-    </footer>
+        <!-- Cake -->
+        <section id="cake">
+            <h2 class="sec-title">Make a Wish</h2>
+            <p class="sec-sub">Blow each candle with a gentle tap 🕯️</p>
+            <div class="cake-wrap">
+                <div class="cake" id="theCake">
+                    <div class="layer l1"></div><div class="layer l2"></div><div class="layer l3"></div>
+                    <div class="icing"></div>
+                    <div class="candles" id="candlesContainer">
+                        <div class="candle"><div class="flame" onclick="blowCandle(event)"></div></div>
+                        <div class="candle"><div class="flame" onclick="blowCandle(event)"></div></div>
+                        <div class="candle"><div class="flame" onclick="blowCandle(event)"></div></div>
+                        <div class="candle"><div class="flame" onclick="blowCandle(event)"></div></div>
+                        <div class="candle"><div class="flame" onclick="blowCandle(event)"></div></div>
+                    </div>
+                </div>
+                <div class="cake-msg" id="cakeMsg">🎉 Happy Birthday, my Shreya! I love you endlessly. 💖</div>
+            </div>
+        </section>
+
+        <!-- Rose -->
+        <section id="rose">
+            <h2 class="sec-title">Bloom for You</h2>
+            <p class="sec-sub">A rose that opens with your touch 🌹</p>
+            <div class="rose-container">
+                <svg class="rose-svg" id="roseSvg" viewBox="0 0 100 100" onclick="bloomRose()">
+                    <g id="petals">
+                        <circle cx="50" cy="38" r="10" fill="#D4A574" opacity="0.8"/>
+                        <circle cx="32" cy="48" r="10" fill="#C9A96E" opacity="0.8"/>
+                        <circle cx="68" cy="48" r="10" fill="#B8860B" opacity="0.8"/>
+                        <circle cx="40" cy="66" r="10" fill="#C49A6C" opacity="0.8"/>
+                        <circle cx="60" cy="66" r="10" fill="#D4A574" opacity="0.8"/>
+                        <circle cx="50" cy="50" r="8" fill="#A05828"/>
+                    </g>
+                    <text x="50" y="90" text-anchor="middle" fill="#5D4037">🌿</text>
+                </svg>
+                <p id="roseMessage" style="color:var(--heart); font-family:'Dancing Script', cursive; font-size:1.3rem; display:none;">You make my world bloom every day 💗</p>
+            </div>
+        </section>
+
+        <!-- Typed Letter -->
+        <section id="letter">
+            <h2 class="sec-title">A Letter from My Heart</h2>
+            <p class="sec-sub">Press the button to open 💌</p>
+            <div class="typed-container" id="typedLetter"></div>
+            <button class="btn" onclick="startTyping()">💌 Read My Words</button>
+        </section>
+
+        <!-- Birthday Note (replaces love counter) -->
+        <section id="note">
+            <h2 class="sec-title">A Birthday Note</h2>
+            <div class="bday-note">
+                <p>🎂 Today, the world became brighter because you were born.<br>
+                You fill every moment with grace, laughter, and the sweetest love.<br>
+                May this year bring you endless joy and dreams come true.<br>
+                You are my forever sunshine, Shreya. ☀️</p>
+            </div>
+        </section>
+
+        <!-- Pop a Balloon (replaces love oracle) -->
+        <section id="balloon">
+            <h2 class="sec-title">Pop a Birthday Balloon</h2>
+            <p class="sec-sub">Tap to reveal a special wish 🎈</p>
+            <div class="balloon-pop-area">
+                <div class="wish-balloon" id="wishBalloon" onclick="popWishBalloon()"></div>
+                <p class="wish-message" id="wishMessage"></p>
+            </div>
+        </section>
+
+        <!-- Compliment Rain -->
+        <section id="rain" style="text-align:center;">
+            <h2 class="sec-title">Compliment Shower</h2>
+            <button class="btn" onclick="complimentRain()">✨ Let it Rain</button>
+            <p style="color:var(--caramel); margin-top:8px;">Because you're infinitely wonderful 💖</p>
+        </section>
+
+        <footer>
+            <p>Handcrafted with <span style="color:var(--heart);">❤️</span> for <strong>Shreya</strong></p>
+            <p style="font-size:0.8rem; opacity:0.7;">Happy Birthday · The World's Best · Forever Yours</p>
+        </footer>
+    </div>
 
     <script>
         (function() {
-            // ---- Optimized Canvas Hearts ----
+            // ---- Canvas Hearts ----
             const canvas = document.getElementById('heartsCanvas');
             const ctx = canvas.getContext('2d');
             canvas.width = window.innerWidth;
@@ -600,10 +653,23 @@
                 }
             }
 
-            // ---- Nav scroll effect ----
-            window.addEventListener('scroll', ()=> {
-                document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
-            });
+            // ---- Welcome overlay logic ----
+            window.revealPage = function() {
+                document.getElementById('welcomeOverlay').style.display = 'none';
+                document.getElementById('mainContent').style.display = 'block';
+                addSoftHearts(12);
+            };
+
+            window.handleNo = function() {
+                document.getElementById('noMessage').style.display = 'block';
+                // change the no button to become a yes button after a short delay
+                const noBtn = document.querySelector('.btn-no');
+                noBtn.textContent = 'Okay, show me 💕';
+                noBtn.onclick = revealPage;
+            };
+
+            // ---- Nav scroll ----
+            window.addEventListener('scroll', ()=> document.getElementById('navbar').classList.toggle('scrolled', window.scrollY>40));
 
             // ---- Music toggle ----
             const bgMusic = document.getElementById('bgMusic');
@@ -616,9 +682,7 @@
                     btn.classList.remove('btn-music');
                     btn.classList.add('btn-outline');
                 } else {
-                    bgMusic.play().catch(() => {
-                        alert('Music file not found. Make sure images/music.mp3 exists.');
-                    });
+                    bgMusic.play().catch(() => alert('Music file not found. Make sure images/music.mp3 exists.'));
                     btn.innerHTML = '🎶 Pause Song';
                     btn.classList.add('btn-music');
                     btn.classList.remove('btn-outline');
@@ -645,7 +709,7 @@
                 addSoftHearts(6);
             };
 
-            // ---- Typed Letter ----
+            // ---- Typed letter ----
             const letter = 
 `My dearest Shreya,
 
@@ -668,48 +732,31 @@ Your forever love 💕`;
                 addSoftHearts(6);
             };
 
-            // ---- Love Counter ----
-            const startDate = new Date('2023-01-15');
-            function updateCounter() {
-                const diff = Math.floor((new Date() - startDate)/(1000*60*60*24));
-                document.getElementById('loveCounter').textContent = diff.toLocaleString();
-                const nextBday = new Date(new Date().getFullYear(), 3, 26);
-                if(nextBday < new Date()) nextBday.setFullYear(nextBday.getFullYear()+1);
-                const daysUntil = Math.ceil((nextBday - new Date())/(1000*60*60*24));
-                document.getElementById('nextBirthday').textContent = `🎂 Next birthday in ${daysUntil} days!`;
-            }
-            updateCounter(); setInterval(updateCounter, 60000);
-
-            // ---- 8-ball ----
-            const answers = [
-                'Absolutely! 💖','Without a doubt, my love','Forever and ever','You are my always','Yes, a thousand times','The stars say yes','My heart says yes','Ask again later… 😉','Better not tell you now','Concentrate and ask again','Signs point to you','It is certain, my darling'
+            // ---- Wish balloon ----
+            const wishes = [
+                "May your day be as sweet as you are 🍫",
+                "All your dreams come true, my love ✨",
+                "A year full of laughter and love 💖",
+                "You deserve the entire universe 🌌",
+                "Stay the wonderful you forever 🌸",
+                "Endless happiness, Shreya 💝"
             ];
-            window.shakeBall = function() {
-                document.getElementById('ballAnswer').textContent = answers[Math.floor(Math.random()*answers.length)];
-                addSoftHearts(4);
-            };
-
-            // ---- Gallery lightbox ----
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightboxImg');
-            document.getElementById('galleryGrid').addEventListener('click', (e)=>{
-                const item = e.target.closest('.gallery-item');
-                if(!item) return;
-                lightboxImg.src = item.dataset.src;
-                lightbox.classList.add('active');
-            });
-            document.getElementById('closeLightbox').addEventListener('click', ()=> lightbox.classList.remove('active'));
-            lightbox.addEventListener('click', (e)=>{ if(e.target===lightbox) lightbox.classList.remove('active'); });
-
-            // ---- Hug ----
-            let hugCount = 0;
-            window.sendHug = function() {
-                hugCount++;
-                document.getElementById('hugCounter').textContent = `Hugs sent: ${hugCount} 🫂`;
+            window.popWishBalloon = function() {
+                const balloon = document.getElementById('wishBalloon');
+                if(balloon.classList.contains('popped')) return;
+                balloon.classList.add('popped');
+                const msg = document.getElementById('wishMessage');
+                msg.textContent = wishes[Math.floor(Math.random()*wishes.length)];
+                msg.style.display = 'block';
                 addSoftHearts(10);
+                // reset after a bit
+                setTimeout(() => {
+                    balloon.classList.remove('popped');
+                    msg.style.display = 'none';
+                }, 2500);
             };
 
-            // ---- Compliment Rain ----
+            // ---- Compliment rain ----
             window.complimentRain = function() {
                 const container = document.getElementById('complimentRain');
                 const words = ['Beautiful','Gorgeous','Stunning','Amazing','Wonderful','Lovely','Incredible','Perfect','Radiant','Elegant','Sweetheart','Queen','Angel','Star','Dream'];
@@ -728,13 +775,9 @@ Your forever love 💕`;
                 addSoftHearts(8);
             };
 
-            // ---- Sparkle name ----
             window.sparkleName = function() {
                 addSoftHearts(10);
             };
-
-            // Initial gentle hearts
-            setTimeout(()=> addSoftHearts(10), 800);
         })();
     </script>
 </body>
