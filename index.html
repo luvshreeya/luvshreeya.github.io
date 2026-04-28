@@ -59,14 +59,8 @@
             font-family: 'Playfair Display', serif;
             font-weight: 700;
         }
-        .cursive {
-            font-family: 'Great Vibes', cursive;
-            font-weight: 400;
-        }
-        .handwritten {
-            font-family: 'Dancing Script', cursive;
-            font-weight: 600;
-        }
+        .cursive { font-family: 'Great Vibes', cursive; font-weight: 400; }
+        .handwritten { font-family: 'Dancing Script', cursive; font-weight: 600; }
         #heartsCanvas {
             position: fixed;
             top: 0;
@@ -139,9 +133,7 @@
             border: 2px solid var(--caramel);
             color: var(--caramel);
         }
-        .btn-no:hover {
-            background: rgba(162,123,91,0.1);
-        }
+        .btn-no:hover { background: rgba(162,123,91,0.1); }
         .no-message {
             margin-top: 15px;
             font-size: 0.9rem;
@@ -153,9 +145,7 @@
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        #mainContent {
-            display: none;
-        }
+        #mainContent { display: none; }
         nav {
             position: fixed;
             top: 0;
@@ -167,9 +157,7 @@
             padding: 8px 0;
             transition: all 0.4s;
         }
-        nav.scrolled {
-            background: rgba(40, 24, 16, 0.9);
-        }
+        nav.scrolled { background: rgba(40, 24, 16, 0.9); }
         .nav-inner {
             max-width: 500px;
             margin: 0 auto;
@@ -200,12 +188,8 @@
             background: var(--gold);
             transition: width 0.3s;
         }
-        .nav-inner a:hover {
-            color: var(--gold);
-        }
-        .nav-inner a:hover::after {
-            width: 100%;
-        }
+        .nav-inner a:hover { color: var(--gold); }
+        .nav-inner a:hover::after { width: 100%; }
         section {
             padding: 70px 20px;
             max-width: 1100px;
@@ -259,9 +243,7 @@
             background: linear-gradient(135deg, #8B5A3C, #6B4E3D);
             color: #FDF8F4;
         }
-        .btn-music:hover {
-            background: linear-gradient(135deg, #A67B5B, #7B5A42);
-        }
+        .btn-music:hover { background: linear-gradient(135deg, #A67B5B, #7B5A42); }
         .music-caption {
             display: none;
             margin-top: 6px;
@@ -357,10 +339,7 @@
             transition: transform 0.3s;
             position: relative;
         }
-        .hero-name:active {
-            transform: scale(1.05);
-        }
-        /* Crown */
+        .hero-name:active { transform: scale(1.05); }
         .crown {
             position: absolute;
             top: -70px;
@@ -398,7 +377,6 @@
             justify-content: center;
             gap: 12px;
         }
-        /* Cake */
         .cake-wrap {
             display: flex;
             flex-direction: column;
@@ -429,7 +407,6 @@
         @keyframes flicker { 0%{transform:translateX(-50%) scaleY(1);} 100%{transform:translateX(-50%) scaleY(0.65);} }
         .cake-msg { display:none; font-size:1.2rem; color:var(--espresso); background:rgba(255,248,244,0.9); padding:10px 24px; border-radius:30px; font-family:'Dancing Script', cursive; animation:popIn 0.5s ease; }
         @keyframes popIn { 0%{transform:scale(0.3);opacity:0;} 70%{transform:scale(1.08);} 100%{transform:scale(1);opacity:1;} }
-        /* Secret envelope */
         .secret-envelope {
             position: absolute;
             bottom: 18px;
@@ -441,10 +418,7 @@
             animation: popIn 0.5s ease;
             z-index: 5;
         }
-        .secret-envelope.visible {
-            display: block;
-        }
-        /* Private note modal */
+        .secret-envelope.visible { display: block; }
         .private-note {
             position: fixed;
             inset: 0;
@@ -465,7 +439,7 @@
             background: var(--white);
             border-radius: 20px;
             padding: 35px 25px;
-            max-width: 400px;
+            max-width: 450px;
             text-align: center;
             border: 2px solid var(--gold);
             box-shadow: 0 15px 40px rgba(0,0,0,0.4);
@@ -481,11 +455,9 @@
             background: none;
             border: none;
         }
-        /* Rose */
         .rose-container { text-align:center; margin:20px 0; }
         .rose-svg { width:90px; height:90px; cursor:pointer; transition:transform 0.4s; }
         .rose-svg.blooming { transform:scale(1.2); }
-        /* Balloon */
         .balloon-pop-area { text-align:center; margin:30px 0; }
         .wish-balloon { width:100px; height:120px; border-radius:50% 50% 45% 45%; background:radial-gradient(circle at 30% 25%, #F0D8A8, #C49A6C); margin:0 auto 10px; cursor:pointer; box-shadow:0 8px 20px rgba(0,0,0,0.15); transition:transform 0.2s; position:relative; animation:floatBalloon 2s ease-in-out infinite; }
         @keyframes floatBalloon { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
@@ -493,19 +465,19 @@
         .wish-balloon.popped { animation:popBurst 0.4s ease forwards; pointer-events:none; }
         @keyframes popBurst { 0%{transform:scale(1);opacity:1;} 100%{transform:scale(1.8);opacity:0;} }
         .wish-message { font-family:'Dancing Script', cursive; font-size:1.4rem; color:var(--heart); display:none; margin-top:10px; }
-        /* Compliment rain */
         .compliment-rain { position:fixed; top:0; left:0; width:100%; pointer-events:none; z-index:9998; }
         .compliment { position:absolute; font-size:1.4rem; animation:fall linear forwards; white-space:nowrap; font-family:'Dancing Script', cursive; }
         @keyframes fall { to { transform:translateY(105vh); opacity:0; } }
-        /* Hug */
         .hug-btn { font-size:3.5rem; cursor:pointer; background:none; border:none; transition:transform 0.3s; animation:pulse 2s infinite; }
         @keyframes pulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.18);} }
-        footer { text-align:center; padding:30px; background:var(--deep); color:var(--cream); font-family:'Cormorant Garamond', serif; margin-top:30px; letter-spacing:0.5px; }
-        .signature {
-            font-family: 'Great Vibes', cursive;
-            font-size: 1.8rem;
-            color: var(--gold);
-            margin-top: 5px;
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: var(--deep);
+            color: var(--cream);
+            font-family: 'Cormorant Garamond', serif;
+            margin-top: 30px;
+            letter-spacing: 0.5px;
         }
         @media (max-width:768px) {
             .nav-inner { gap:12px; }
@@ -652,10 +624,7 @@
         </section>
 
         <footer>
-            <p>Handcrafted with <span style="color:var(--heart);">❤️</span> for <strong>Shreya</strong></p>
-            <p style="font-size:0.8rem; opacity:0.7;">Happy Birthday · The World's Best · Forever Yours</p>
-            <p class="signature">Made with love by Y</p>
-            <!-- Replace 'Y' with your name -->
+            <p>Handcrafted with <span style="color:var(--heart);">❤️</span> for <strong>Shreya</strong> by <strong>Y</strong></p>
         </footer>
     </div>
 
@@ -664,9 +633,10 @@
         <div class="private-note-card">
             <button class="private-note-close" onclick="closePrivateNote()">✕</button>
             <span style="font-size:2.5rem;">💖</span>
-            <h3 style="font-family:'Dancing Script', cursive; color:var(--espresso); margin-top:10px;">My Forever Love</h3>
+            <h3 style="font-family:'Dancing Script', cursive; color:var(--espresso); margin-top:10px;">My Special</h3>
             <p style="color:var(--chocolate); line-height:1.8;">
-                Shreya, you are the secret ingredient that makes every day taste like the sweetest cake. I loved you yesterday, I love you still, always have, always will. 💕
+                Shreya, you are the secret ingredient that makes every day feel like the sweetest cake. You're truly very special to me. Even if things between us feel a little different now, I just want you to know that I still care about you and adore you—maybe I don't always make it obvious. You know how life gets… complicated, messy, and unpredictable.<br><br>
+                But I wanted to do something special for you, something from the heart. I made this little website as a gift, and I really hope you like it. 💛
             </p>
         </div>
     </div>
@@ -836,7 +806,7 @@ Your forever love 💕`;
                 addSoftHearts(14);
             };
 
-            // Compliment rain (expanded list)
+            // Compliment rain
             window.complimentRain = function() {
                 const container = document.getElementById('complimentRain');
                 const words = [
