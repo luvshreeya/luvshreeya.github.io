@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Dancing+Script:wght@400;600&family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
     <style>
         :root {
+            /* Warmer, softer brown palette */
             --deep: #3A2318;
             --espresso: #4E3829;
             --chocolate: #6B4E3D;
@@ -68,6 +69,46 @@
             z-index: 9999;
             will-change: transform;
         }
+        /* Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(58, 35, 24, 0.9);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 10px 0;
+            transition: all 0.4s;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 1px;
+        }
+        nav.scrolled {
+            padding: 6px 0;
+            background: rgba(40, 24, 16, 0.95);
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            padding: 0 15px;
+        }
+        .nav-inner a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            transition: var(--transition);
+            padding: 4px 0;
+            position: relative;
+            font-weight: 500;
+        }
+        .nav-inner a:hover {
+            color: var(--gold);
+        }
         /* Sections */
         section {
             padding: 70px 20px;
@@ -98,7 +139,7 @@
             margin-bottom: 30px;
             font-size: 1.05rem;
         }
-        /* Buttons (general) */
+        /* Buttons */
         .btn {
             display: inline-block;
             padding: 10px 26px;
@@ -130,7 +171,15 @@
         .btn-outline:hover {
             background: rgba(212, 175, 55, 0.08);
         }
-        /* Hero – no buttons, pure typewriter */
+        .btn-music {
+            background: linear-gradient(135deg, #8B5A3C, #6B4E3D);
+            color: #FDF8F4;
+            border: none;
+        }
+        .btn-music:hover {
+            background: linear-gradient(135deg, #A67B5B, #7B5A42);
+        }
+        /* Hero */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -160,9 +209,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100%;
-            max-width: 700px;
-            padding: 0 20px;
         }
         .profile-pic {
             width: 140px;
@@ -170,7 +216,7 @@
             border-radius: 50%;
             border: 3px solid var(--gold);
             overflow: hidden;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             box-shadow: 0 8px 30px rgba(0,0,0,0.3);
             animation: softPop 1.2s ease forwards;
             background: var(--caramel);
@@ -195,50 +241,59 @@
             80% { transform: scale(1.05); }
             100% { transform: scale(1); opacity: 1; }
         }
-        /* Typewriter container – pure text, no buttons */
-        #heroTypewriter {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.8rem;
-            color: var(--cream);
-            line-height: 1.6;
-            white-space: pre-wrap;
-            word-break: break-word;
-            min-height: 200px;
-            text-align: center;
-            letter-spacing: 0.5px;
-            margin-bottom: 10px;
+        .hero-badge {
+            display: inline-block;
+            padding: 5px 20px;
+            border: 1px solid var(--gold);
+            border-radius: 30px;
+            color: var(--gold);
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            font-family: 'Cormorant Garamond', serif;
         }
-        .hero-name-typed {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3.2rem;
+        .hero-title {
+            font-size: clamp(2.3rem, 5.5vw, 4.5rem);
+            color: #FDF8F4;
+            letter-spacing: 2px;
+            margin-bottom: 0;
+            font-family: 'Playfair Display', serif;
+        }
+        .hero-name {
+            font-size: clamp(2.6rem, 6.5vw, 5rem);
             background: linear-gradient(180deg, #F0E0B0, #D4AF37, #A67B3D);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            font-family: 'Great Vibes', cursive;
             font-weight: 400;
-            display: inline-block;
             filter: drop-shadow(0 4px 20px rgba(212,175,55,0.5));
-            animation: gentlePulse 2s infinite;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: transform 0.3s;
         }
-        @keyframes gentlePulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        .hero-name:active {
+            transform: scale(1.05);
         }
-        .cursor-blink {
-            display: inline-block;
-            width: 3px;
-            height: 1.5rem;
-            background: var(--gold);
-            margin-left: 4px;
-            vertical-align: middle;
-            animation: blink 1s step-end infinite;
+        .hero-msg {
+            color: var(--cream);
+            max-width: 480px;
+            margin: 15px auto;
+            font-size: 1.05rem;
+            letter-spacing: 0.4px;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            line-height: 1.8;
         }
-        @keyframes blink {
-            from, to { background: transparent; }
-            50% { background: var(--gold); }
+        .hero-actions {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
         }
-        /* Cake */
+        /* Cake (same styling with warmer colors) */
         .cake-wrap {
             display: flex;
             flex-direction: column;
@@ -306,8 +361,8 @@
         /* Footer */
         footer { text-align:center; padding:30px; background:var(--deep); color:var(--cream); font-family:'Cormorant Garamond', serif; margin-top:30px; letter-spacing:0.5px; }
         @media (max-width:768px) {
-            .hero-name-typed { font-size: 2.4rem; }
-            #heroTypewriter { font-size: 1.4rem; }
+            .nav-inner a { font-size:0.7rem; gap:6px; }
+            .hero-name { font-size:2.6rem; }
             .profile-pic { width:120px; height:120px; }
         }
     </style>
@@ -316,23 +371,48 @@
     <canvas id="heartsCanvas"></canvas>
     <div class="compliment-rain" id="complimentRain"></div>
 
-    <!-- Hidden audio (optional) -->
+    <!-- Hidden audio for background music (replace the src with your own romantic mp3) -->
     <audio id="bgMusic" loop>
         <source src="" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
-    <!-- HERO: typewriter only, no buttons -->
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <a href="#home">Home</a>
+            <a href="#cake">🎂 Cake</a>
+            <a href="#rose">🌹 Rose</a>
+            <a href="#letter">💌 Letter</a>
+            <a href="#counter">⏳ Us</a>
+            <a href="#eightball">🎱 Magic</a>
+            <a href="#gallery">📸 Photos</a>
+            <a href="#playlist">🎶 Song</a>
+            <a href="#hug">🤗 Hug</a>
+            <a href="#compliment">✨ Rain</a>
+        </div>
+    </nav>
+
+    <!-- Hero with profile picture and action buttons -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <!-- Profile picture (replace with her actual image) -->
+            <!-- Profile picture - replace the placeholder with her image -->
             <div class="profile-pic" id="profilePic">
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect fill='%23C2A084' width='200' height='200'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' fill='%23FDF8F4' font-size='70' font-family='Georgia'%3E🌸%3C/text%3E%3C/svg%3E" alt="Shreya's photo">
                 <span class="placeholder-icon" style="display:none;">🌸</span>
             </div>
-            <!-- The typewriter area -->
-            <div id="heroTypewriter">
-                <span class="cursor-blink" id="typingCursor"></span>
+            <span class="hero-badge">🌸 a celebration of you 🌸</span>
+            <h1 class="hero-title">Happy Birthday</h1>
+            <div class="hero-name" onclick="sparkleName()">Shreya</div>
+            <p class="hero-msg">
+                You are the gentle warmth in every cup of coffee,<br>
+                the softest note in every love song,<br>
+                and the most beautiful chapter of my life.<br>
+                Today, the universe celebrates you. 💛
+            </p>
+            <div class="hero-actions">
+                <a href="#cake" class="btn">🎂 Let's Cut the Cake</a>
+                <button class="btn btn-music" id="musicToggleBtn" onclick="toggleMusic()">🎵 Play Our Song</button>
             </div>
         </div>
     </section>
@@ -508,41 +588,29 @@
                 }
             }
 
-            // ---- Typewriter effect for hero (no buttons) ----
-            const heroTypewriter = document.getElementById('heroTypewriter');
-            const cursor = document.getElementById('typingCursor');
-            const fullHeroText = "Happy Birthday\nShreya\nYou are the gentle warmth in every cup of coffee,\nthe softest note in every love song,\nand the most beautiful chapter of my life.\nToday, the universe celebrates you. 💛";
+            // ---- Music toggle ----
+            const bgMusic = document.getElementById('bgMusic');
+            let musicPlaying = false;
+            window.toggleMusic = function() {
+                const btn = document.getElementById('musicToggleBtn');
+                if (musicPlaying) {
+                    bgMusic.pause();
+                    btn.innerHTML = '🎵 Play Our Song';
+                    btn.classList.remove('btn-music');
+                    btn.classList.add('btn-outline');
+                } else {
+                    bgMusic.play().catch(() => {
+                        alert('Please replace the audio source with a romantic MP3 file.');
+                    });
+                    btn.innerHTML = '🎶 Pause Song';
+                    btn.classList.add('btn-music');
+                    btn.classList.remove('btn-outline');
+                }
+                musicPlaying = !musicPlaying;
+            };
 
-            function typeHeroText() {
-                heroTypewriter.innerHTML = '';
-                heroTypewriter.appendChild(cursor);
-                let i = 0;
-                const speed = 60;
-                const timer = setInterval(() => {
-                    if (i < fullHeroText.length) {
-                        const char = fullHeroText.charAt(i);
-                        if (char === '\n') {
-                            heroTypewriter.insertBefore(document.createElement('br'), cursor);
-                        } else {
-                            heroTypewriter.insertBefore(document.createTextNode(char), cursor);
-                        }
-                        i++;
-                    } else {
-                        clearInterval(timer);
-                        // Style Shreya's name beautifully
-                        const html = heroTypewriter.innerHTML;
-                        const lines = html.split('<br>');
-                        if (lines.length >= 2) {
-                            lines[1] = '<span class="hero-name-typed">' + lines[1] + '</span>';
-                            heroTypewriter.innerHTML = lines.join('<br>') + '<span class="cursor-blink" id="typingCursor"></span>';
-                            const cursors = heroTypewriter.querySelectorAll('.cursor-blink');
-                            if (cursors.length > 1) for (let c=0; c<cursors.length-1; c++) cursors[c].remove();
-                        }
-                    }
-                }, speed);
-            }
-
-            setTimeout(typeHeroText, 800);
+            // ---- Nav scroll ----
+            window.addEventListener('scroll', ()=> document.getElementById('navbar').classList.toggle('scrolled', window.scrollY>40));
 
             // ---- Cake ----
             let blown = 0;
@@ -587,11 +655,11 @@ Your forever love 💕`;
             };
 
             // ---- Love Counter ----
-            const startDate = new Date('2023-01-15');
+            const startDate = new Date('2023-01-15'); // CHANGE to your special date
             function updateCounter() {
                 const diff = Math.floor((new Date() - startDate)/(1000*60*60*24));
                 document.getElementById('loveCounter').textContent = diff.toLocaleString();
-                const nextBday = new Date(new Date().getFullYear(), 3, 26);
+                const nextBday = new Date(new Date().getFullYear(), 3, 26); // April 26 (adjust for her actual birthday)
                 if(nextBday < new Date()) nextBday.setFullYear(nextBday.getFullYear()+1);
                 const daysUntil = Math.ceil((nextBday - new Date())/(1000*60*60*24));
                 document.getElementById('nextBirthday').textContent = `🎂 Next birthday in ${daysUntil} days!`;
@@ -646,13 +714,13 @@ Your forever love 💕`;
                 addSoftHearts(8);
             };
 
-            // ---- Sparkle name (click on her name) ----
+            // ---- Sparkle name hero ----
             window.sparkleName = function() {
                 addSoftHearts(10);
             };
 
-            // Initial gentle hearts
-            setTimeout(()=> addSoftHearts(10), 1500);
+            // Initial gentle welcome
+            setTimeout(()=> addSoftHearts(10), 800);
         })();
     </script>
 </body>
