@@ -32,7 +32,6 @@
         html {
             scroll-behavior: smooth;
         }
-        /* Subtle brown‑paper texture */
         body {
             font-family: 'Cormorant Garamond', 'Georgia', serif;
             background: var(--warm);
@@ -387,7 +386,7 @@
             color: var(--cream);
             max-width: 480px;
             margin: 15px auto;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             letter-spacing: 0.4px;
             font-style: italic;
             line-height: 1.8;
@@ -502,6 +501,12 @@
         .hug-btn { font-size:3.5rem; cursor:pointer; background:none; border:none; transition:transform 0.3s; animation:pulse 2s infinite; }
         @keyframes pulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.18);} }
         footer { text-align:center; padding:30px; background:var(--deep); color:var(--cream); font-family:'Cormorant Garamond', serif; margin-top:30px; letter-spacing:0.5px; }
+        .signature {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-top: 5px;
+        }
         @media (max-width:768px) {
             .nav-inner { gap:12px; }
             .nav-inner a { font-size:0.7rem; }
@@ -556,10 +561,10 @@
                     Shreya
                 </div>
                 <p class="hero-msg">
-                    You are the gentle warmth in every cup of coffee,<br>
-                    the softest note in every love song,<br>
-                    and the most beautiful chapter of my life.<br>
-                    Today, let's celebrate. 💛
+                    You are the gentle warmth that turns ordinary mornings into poetry,<br>
+                    the melody that makes my heart dance,<br>
+                    and the most beautiful reason I believe in magic.<br>
+                    Today, the whole world whispers your name. 💛
                 </p>
                 <div class="hero-actions">
                     <button class="btn btn-music" id="musicToggleBtn" onclick="toggleMusic()">🎵 Play Our Song</button>
@@ -649,6 +654,8 @@
         <footer>
             <p>Handcrafted with <span style="color:var(--heart);">❤️</span> for <strong>Shreya</strong></p>
             <p style="font-size:0.8rem; opacity:0.7;">Happy Birthday · The World's Best · Forever Yours</p>
+            <p class="signature">Made with love by Y</p>
+            <!-- Replace 'Y' with your name -->
         </footer>
     </div>
 
@@ -766,7 +773,7 @@
                 setTimeout(() => crown.classList.remove('visible'), 2000);
             };
 
-            // Rose (fixed: now works smoothly)
+            // Rose
             window.bloomRose = function() {
                 const rose = document.getElementById('roseSvg');
                 rose.classList.toggle('blooming');
@@ -800,7 +807,16 @@ Your forever love 💕`;
             };
 
             // Wish balloon
-            const wishes = ["May your day be as sweet as you are 🍫","All your dreams come true, my love ✨","A year full of laughter and love 💖","You deserve the entire universe 🌌","Stay the wonderful you forever 🌸","Endless happiness, Shreya 💝"];
+            const wishes = [
+                "May your day be as sweet as you are 🍫",
+                "All your dreams come true, my love ✨",
+                "A year full of laughter and love 💖",
+                "You deserve the entire universe 🌌",
+                "Stay the wonderful you forever 🌸",
+                "Endless happiness, Shreya 💝",
+                "Shine bright like the star you are ⭐",
+                "Every moment of today be magical 🪄"
+            ];
             window.popWishBalloon = function() {
                 const balloon = document.getElementById('wishBalloon');
                 if(balloon.classList.contains('popped')) return;
@@ -820,11 +836,15 @@ Your forever love 💕`;
                 addSoftHearts(14);
             };
 
-            // Compliment rain
+            // Compliment rain (expanded list)
             window.complimentRain = function() {
                 const container = document.getElementById('complimentRain');
-                const words = ['Beautiful','Gorgeous','Stunning','Amazing','Wonderful','Lovely','Incredible','Perfect','Radiant','Elegant','Sweetheart','Queen','Angel','Star','Dream'];
-                for(let i=0; i<18; i++) {
+                const words = [
+                    'Beautiful','Gorgeous','Stunning','Amazing','Wonderful','Lovely','Incredible','Perfect','Radiant',
+                    'Elegant','Sweetheart','Queen','Angel','Star','Dream','Enchanting','Breathtaking','Dazzling',
+                    'Heartwarming','Irresistible','Adorable','Precious','One of a kind','My everything'
+                ];
+                for(let i=0; i<22; i++) {
                     setTimeout(()=>{
                         const span = document.createElement('span'); span.className='compliment';
                         span.textContent = words[Math.floor(Math.random()*words.length)];
