@@ -298,12 +298,13 @@
             animation: softPop 1.2s ease forwards;
             background: var(--caramel);
         }
-        /* The fix: cover + smart positioning to show her face fully */
+        /* Full image visible, no cropping */
         .profile-pic img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            object-position: top center;  /* shows face without cutting it off */
+            object-fit: contain;
+            object-position: center;
+            background: var(--caramel);
         }
         @keyframes softPop {
             0% { transform: scale(0.3); opacity: 0; }
