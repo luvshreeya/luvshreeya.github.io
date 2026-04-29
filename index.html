@@ -297,11 +297,15 @@
             box-shadow: 0 8px 30px rgba(0,0,0,0.3);
             animation: softPop 1.2s ease forwards;
             background: var(--caramel);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .profile-pic img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;  /* Changed from cover to contain to show the whole image */
+            background: var(--caramel);
         }
         @keyframes softPop {
             0% { transform: scale(0.3); opacity: 0; }
@@ -535,7 +539,7 @@
                 <p class="hero-msg">
                     You are the gentle warmth that turns ordinary mornings into poetry,<br>
                     the melody that makes my heart dance,<br>
-                    and the most beautiful reason I believe in beauty.<br>
+                    and the most beautiful reason I believe in magic.<br>
                     Today, the whole world whispers your name. 💛
                 </p>
                 <div class="hero-actions">
@@ -635,7 +639,7 @@
             <span style="font-size:2.5rem;">💖</span>
             <h3 style="font-family:'Dancing Script', cursive; color:var(--espresso); margin-top:10px;">My Special</h3>
             <p style="color:var(--chocolate); line-height:1.8;">
-                Shreya, you are the secret ingredient that makes every day feel like the sweetest cake. You're truly very special to me. Even if things between us feel a little different now, I just want you to know that I still care about you and adore you, maybe I don't always make it obvious. You know how life gets… complicated,  messy, and unpredictable.<br><br>
+                Shreya, you are the secret ingredient that makes every day feel like the sweetest cake. You're truly very special to me. Even if things between us feel a little different now, I just want you to know that I still care about you and adore you—maybe I don't always make it obvious. You know how life gets… complicated, messy, and unpredictable.<br><br>
                 But I wanted to do something special for you, something from the heart. I made this little website as a gift, and I really hope you like it. 💛
             </p>
         </div>
